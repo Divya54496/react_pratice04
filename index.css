@@ -19,3 +19,29 @@
     padding: 10px;
     margin: 10px;
 }
+
+.res-card{
+    height: 300px;
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    background-color: gray
+}
+
+.res-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.res-card:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+.search{
+
+    justify-items: center;
+}
+
+.res-logo{
+    width: 100%;
+
+}
