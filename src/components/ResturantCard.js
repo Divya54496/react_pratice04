@@ -1,11 +1,12 @@
 import React from "react";
+import { CDN_URL } from "../utils/constant";
 
 const ResturantCard = ({resturantData}) =>{
 
     const{ name , cuisines , avgRating ,costForTwo , cloudinaryImageId} = resturantData?.info
     return(
         <div className="res-card">
-            <img className="res-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+            <img className="res-logo" src={CDN_URL +
           cloudinaryImageId} alt="res-logo"/>
           
         <h4>{name}</h4>

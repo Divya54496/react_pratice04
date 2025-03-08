@@ -1,20 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ResturantCard from "./ResturantCard";
+import Shimmer from "./Shimmer";
 
-const Body = () =>{
-    return (
-        <div className="body">
-            <div className="search">
-                <p>Search</p>
-            </div>
-        <div className="res-container">
-        {resList.map((resturantData) => (
-          <ResturantCard key={resturantData.info.id} resturantData={resturantData} />
+const Body = () => {
+  const [listofResturants, setListOfResturants] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json);
+
+    setListOfResturants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+  // Conditional Rendering
+
+  const filterResturanList = () => {
+    const filteredResturant = listofResturants.filter(
+      (res) => res.info.avgRating > 4.5
+    );
+
+    setListOfResturants(filteredResturant);
+    console.log(filteredResturant);
+  };
+  return(
+  listofResturants.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="body">
+      <div className="btn">
+        <button className="filter-btn" onClick={filterResturanList}>
+          Top Rated Resturants
+        </button>
+      </div>
+      <div className="res-container">
+        {listofResturants.map((resturantData) => (
+          <ResturantCard
+            key={resturantData.info.id}
+            resturantData={resturantData}
+          />
         ))}
-        </div>
-        </div>
-    )
-}
-
+      </div>
+    </div>
+  )
+  );
+};
 
 export default Body;

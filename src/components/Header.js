@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { LOGO_URL } from "../utils/constant";
 
 const Header = () =>{
+
+const [btnReact , setBtnReact] = useState("Login")
+
+console.log("Header render")
+console.log(btnReact);
+
+
     return (
         <div className="header">
             <div className="logo-container">
-                <img src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&sf=&txt_keyword=All" className="logo"/>
+                <img src={LOGO_URL}className="logo"/>
             </div>
             <div className="nav-items">
                 <ul>
+
                     <li>Home</li>
                     <li>About</li>
                     <li>Contact Us</li>
                     <li>Cart</li>
+                    <button className="login-btn" onClick={()=>btnReact === "Login" ? setBtnReact("Logout") : setBtnReact("Login")}>{btnReact}</button>
                 </ul>
             </div>
         </div>
