@@ -4,8 +4,8 @@
   "description": "my react app",
   "main": "App.js",
   "scripts": {
-    "start":"parcel index.html",
-    "build":"build parcel index.html",
+    "start": "parcel index.html",
+    "build": "build parcel index.html",
     "test": "jest"
   },
   "repository": {
@@ -22,11 +22,13 @@
   },
   "homepage": "https://github.com/Divya54496/react_pratice04#readme",
   "devDependencies": {
+    "@locator/babel-jsx": "^0.4.4",
     "parcel": "^2.13.3",
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.0"
   }
 }
