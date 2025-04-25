@@ -70,3 +70,7 @@
     padding: 5px;
     margin: 5px;
 }
+
+.menu > ul > li{
+    margin: 10px;
+}

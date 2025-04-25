@@ -10,15 +10,10 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8873185&lng=77.57807509999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')    
     const json = await data.json();
-    console.log(json);
-
-    setListOfResturants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfResturants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   // Conditional Rendering
 
@@ -31,7 +26,7 @@ const Body = () => {
     console.log(filteredResturant);
   };
   return(
-  listofResturants.length === 0 ? (
+  listofResturants && listofResturants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -43,7 +38,7 @@ const Body = () => {
       <div className="res-container">
         {listofResturants.map((resturantData) => (
           <ResturantCard
-            key={resturantData.info.id}
+            key={resturantData?.info?.id}
             resturantData={resturantData}
           />
         ))}

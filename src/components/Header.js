@@ -32,7 +32,9 @@ useEffect(()=>{
                    <li>
                    <Link to="/contact-us">Contact Us</Link>
                    </li>
-                    
+                   <li>
+                    <Link to="/resturants/:resId">Menu</Link>
+                    </li>
                     <li>Cart</li>
                     <button className="login-btn" onClick={()=>btnReact === "Login" ? setBtnReact("Logout") : setBtnReact("Login")}>{btnReact}</button>
                 </ul>
